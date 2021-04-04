@@ -1,0 +1,2 @@
+This project will showcase what I have learned thus far, which includes: JavaScript, HTML, and CSS. I will be creating a calculator that will
+run four basic math operators--add, subtract, multiply, and divide.
