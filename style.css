@@ -1,0 +1,89 @@
+body
+{
+    min-height: 100vh;
+    min-width: 100vh;
+    background-color: darkgray;
+    display: grid;
+    grid-template-columns: 37.5% 25% 37.5%; 
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    '.. container ..';
+}
+
+.container
+{
+    background-color: red;
+    grid-area: container;
+    /* padding: 50px; */
+    display: grid;
+    align-items: center;
+}
+
+.calc
+{
+    background-color: yellow;
+    min-height: 50%;
+    border: solid 8px black;
+    border-radius: 3%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+    'display display display display'
+    'clear zero equal plus'
+    'one two three minus'
+    'four five six multiply'
+    'seven eight nine divide';
+}
+
+.add
+{
+    background-color: white;
+    grid-area: plus;
+}
+
+.subtract
+{
+    background-color: white;
+    grid-area: minus;
+}
+
+.multiply
+{
+    background-color: white;
+    grid-area: multiply;
+}
+
+.divide
+{
+    background-color: white;
+    grid-area: divide;
+}
+
+.clear
+{
+    background-color: darkslateblue;
+    grid-area: clear;
+}
+
+#Zero
+{
+    grid-area: zero;
+}
+
+#display
+{
+    background-color: purple;
+    grid-area: display;
+}
+
+.equal
+{
+    grid-area: equal;
+    background-color: darkorange;
+}
+
+.number
+{
+    background-color: lightslategray;
+}
