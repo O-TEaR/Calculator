@@ -46,3 +46,14 @@ function operate (operator, num1, num2) {
             console.log('something went wrong');
     }
 }
+
+let display = document.querySelector('#display');
+
+let buttons = document.querySelectorAll('button');
+let buttonValue;
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        buttonValue = button.textContent;
+        display.textContent = `${buttonValue}`;
+    });
+});
