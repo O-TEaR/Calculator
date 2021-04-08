@@ -73,8 +73,14 @@ body
 
 #display
 {
-    background-color: purple;
+    background-color: rgb(190, 187, 190);
     grid-area: display;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    'expression'
+    'answer';
 }
 
 .equal
@@ -86,4 +92,16 @@ body
 .number
 {
     background-color: lightslategray;
+}
+
+#expDisplay 
+{
+    grid-area: expression;
+    border: solid 1px black;
+}
+
+#ansDisplay 
+{
+    grid-area: answer;
+    border: solid 1px black;
 }
