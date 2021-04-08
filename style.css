@@ -12,7 +12,6 @@ body
 
 .container
 {
-    background-color: red;
     grid-area: container;
     /* padding: 50px; */
     display: grid;
