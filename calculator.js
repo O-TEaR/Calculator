@@ -142,9 +142,13 @@ function checkExpression () {
             alert('you can\'t do that');
             clearCalc();
         }
-        else {
+        else if (Number.isInteger(answer)) {
             console.log(`ANSWER IS ${answer}`);
             ansDisplay.textContent = `${answer}`;
+            replaceFirstNum();
+        }
+        else {
+            ansDisplay.textContent = `${answer.toFixed(2)}`;
             replaceFirstNum();
         }
     }
