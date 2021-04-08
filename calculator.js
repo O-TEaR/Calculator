@@ -86,17 +86,11 @@ function check() {
         console.log('equal button');
         checkExpression ();
         console.log(answer);
-        expressionArray = [];
-        operateVals = [];
-        aNumber = [];
-        bNumber = [];
+        clearCalc();
     }
     else if (validateClear.test(buttonValue)) {
         console.log('you hit clear');
-        expressionArray = [];
-        operateVals = [];
-        aNumber = [];
-        bNumber = [];
+        clearCalc();
         ansDisplay.textContent = '';
     }
     console.log(expressionArray);
@@ -144,8 +138,21 @@ function checkExpression () {
         bNumber = bNumber.join('');    
         operateVals[2] = Number(bNumber);
         answer = operate(operateVals[0], operateVals[1], operateVals[2]);
-        console.log(`ANSWER IS ${answer}`);
-        ansDisplay.textContent = `${answer}`;
-        replaceFirstNum();
+        if (operateVals[1] == '/' && operateVals[2] == 0) {
+            alert('you can\'t do that');
+            clearCalc();
+        }
+        else {
+            console.log(`ANSWER IS ${answer}`);
+            ansDisplay.textContent = `${answer}`;
+            replaceFirstNum();
+        }
     }
+}
+
+function clearCalc () {
+    expressionArray = [];    
+    operateVals = [];    
+    aNumber = [];    
+    bNumber = [];    
 }
