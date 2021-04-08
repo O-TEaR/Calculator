@@ -47,7 +47,8 @@ function operate (num1, operator, num2) {
     }
 }
 
-let display = document.querySelector('#display');
+let expDisplay = document.querySelector('#expDisplay');
+let ansDisplay = document.querySelector('#ansDisplay');
 
 let buttons = document.querySelectorAll('button');
 let buttonValue;
@@ -56,7 +57,7 @@ buttons.forEach((button) => {
         console.log(button.textContent);
         buttonValue = button.textContent;
         check();
-        display.textContent = `${expressionArray.join('')}`;
+        expDisplay.textContent = `${expressionArray.join('')}`;
     });
 });
 
@@ -85,7 +86,6 @@ function check() {
         console.log('equal button');
         checkExpression ();
         console.log(answer);
-        display.textContent = `${answer}`;
         expressionArray = [];
         operateVals = [];
         aNumber = [];
@@ -97,6 +97,7 @@ function check() {
         operateVals = [];
         aNumber = [];
         bNumber = [];
+        ansDisplay.textContent = '';
     }
     console.log(expressionArray);
     console.log(`operate values is ${operateVals}`);
@@ -144,6 +145,7 @@ function checkExpression () {
         operateVals[2] = Number(bNumber);
         answer = operate(operateVals[0], operateVals[1], operateVals[2]);
         console.log(`ANSWER IS ${answer}`);
+        ansDisplay.textContent = `${answer}`;
         replaceFirstNum();
     }
 }
