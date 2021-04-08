@@ -1,3 +1,17 @@
+const validateNumber = /[0-9]/;
+const validateOperator = /[\*\+\-\/]/;
+const validateEqual = /[=]/;
+const validateClear = /Clear/
+let expressionArray = [];
+let operateVals = [];
+let aNumber = [];
+let bNumber = [];
+let answer;
+let expDisplay = document.querySelector('#expDisplay');
+let ansDisplay = document.querySelector('#ansDisplay');
+let buttons = document.querySelectorAll('button');
+let buttonValue;
+
 function add (x,y) {
 	return x + y;
 }
@@ -47,11 +61,6 @@ function operate (num1, operator, num2) {
     }
 }
 
-let expDisplay = document.querySelector('#expDisplay');
-let ansDisplay = document.querySelector('#ansDisplay');
-
-let buttons = document.querySelectorAll('button');
-let buttonValue;
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         console.log(button.textContent);
@@ -60,16 +69,6 @@ buttons.forEach((button) => {
         expDisplay.textContent = `${expressionArray.join('')}`;
     });
 });
-
-const validateNumber = /[0-9]/;
-const validateOperator = /[\*\+\-\/]/;
-const validateEqual = /[=]/;
-const validateClear = /Clear/
-let expressionArray = [];
-let operateVals = [];
-let aNumber = [];
-let bNumber = [];
-let answer;
 
 function check() {
     if (validateNumber.test(buttonValue)) {
@@ -105,6 +104,7 @@ function checkOperator() {
         console.log(operateVals.length);      
         answer = operate(operateVals[0], operateVals[1], operateVals[2]);
         console.log(`ANSWER IS ${answer}`);
+        checkAnswer();
         replaceFirstNum();
     }    
     else if (operateVals.length == 0 && aNumber.length > 0) {
@@ -138,19 +138,7 @@ function checkExpression () {
         bNumber = bNumber.join('');    
         operateVals[2] = Number(bNumber);
         answer = operate(operateVals[0], operateVals[1], operateVals[2]);
-        if (operateVals[1] == '/' && operateVals[2] == 0) {
-            alert('you can\'t do that');
-            clearCalc();
-        }
-        else if (Number.isInteger(answer)) {
-            console.log(`ANSWER IS ${answer}`);
-            ansDisplay.textContent = `${answer}`;
-            replaceFirstNum();
-        }
-        else {
-            ansDisplay.textContent = `${answer.toFixed(2)}`;
-            replaceFirstNum();
-        }
+        checkAnswer();
     }
 }
 
@@ -159,4 +147,20 @@ function clearCalc () {
     operateVals = [];    
     aNumber = [];    
     bNumber = [];    
+}
+
+function checkAnswer () {
+    if (operateVals[1] == '/' && operateVals[2] == 0) {
+        alert('you can\'t do that');
+        clearCalc();
+    }
+    else if (Number.isInteger(answer)) {
+        console.log(`ANSWER IS ${answer}`);
+        ansDisplay.textContent = `${answer}`;
+        replaceFirstNum();
+    }
+    else {
+        ansDisplay.textContent = `${answer.toFixed(2)}`;
+        replaceFirstNum();
+    }
 }
